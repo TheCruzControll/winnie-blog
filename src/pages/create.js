@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import { Row, Col } from 'flwww';
 import { getFirebase } from '../firebase';
 import { Remarkable } from 'remarkable';
+import { Typography, Container, TextField, Button } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
 
 const Create = () => {
+  let history = useHistory();
   const md = new Remarkable();
   const [content, setContent] = useState('');
   const [title, setTitle] = useState('');
@@ -63,10 +64,11 @@ const Create = () => {
       .catch(function(error) {
         console.error('Error adding document: ', error);
       });
+    history.push('/');
   };
 
   return (
-    <>
+    <Container>
       <Row>
         <Col grid='6'>
           <h1>Create New Posts Here</h1>
@@ -99,7 +101,7 @@ const Create = () => {
             />
           </form>
           <Button
-            variant='outlined'
+            variant='contained'
             color='primary'
             onClick={() => createPost()}
           >
@@ -107,13 +109,17 @@ const Create = () => {
           </Button>
         </Col>
         <Col grid='6'>
-          <h1>{title}</h1>
+          <h1>This is the Preview of your Post! </h1>
+          <Typography variant='h5'>
+            <em>{generateDate().pretty}</em>
+          </Typography>
+          <Typography variant='h1'>{title}</Typography>
           <div>
             <ReactMarkdown source={content} />
           </div>
         </Col>
       </Row>
-    </>
+    </Container>
   );
 };
 
