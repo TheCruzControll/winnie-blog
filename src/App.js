@@ -1,20 +1,19 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import ProtectedRoute from './ProtectedRoute';
 import './App.css';
-import { Grid, Container, Toolbar, Typography, Link } from '@material-ui/core';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-
 import Home from './pages/home';
 import Post from './pages/post';
 import NoMatch from './pages/no-match';
 import Create from './pages/create';
 import Login from './pages/login';
+import Navbar from './components/navbar';
+
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#679186'
+      main: '#547c63'
     },
     secondary: {
       main: '#ffb4ac'
@@ -48,42 +47,15 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Router>
         <CssBaseline />
-        <nav>
-          <Container>
-            <Grid
-              container
-              direction='row'
-              justify='flex-end'
-              alignItems='center'
-            >
-              <Toolbar variant='dense'>
-                <Typography variant='h5'>
-                  <Link underline='none' color='inherit'>
-                    Home
-                  </Link>
-                </Typography>
-                <Typography variant='h5'>
-                  <Link underline='none' color='inherit'>
-                    About
-                  </Link>
-                </Typography>
-                <Typography variant='h5'>
-                  <Link underline='none' color='inherit'>
-                    Blog
-                  </Link>
-                </Typography>
-              </Toolbar>
-            </Grid>
-          </Container>
-        </nav>
-
+        <Navbar />
         <main>
           <Switch>
-            <Route path='/login' component={Login} />
             <Route exact path='/' component={Home} />
-            <ProtectedRoute path='/create' component={Create} />
-            <Route path='/:slug' component={Post} />
+            <Route path='/create' component={Create} />
+            <Route path='/about' component={NoMatch} />
+            <Route path='/login' component={Login} />
             <Route path='/404' component={NoMatch} />
+            <Route path='/:slug' component={Post} />
           </Switch>
         </main>
       </Router>

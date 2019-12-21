@@ -1,6 +1,24 @@
 p {
   font-size: 18px;
 }
+.nav {
+  border-bottom: 1px solid #eee;
+}
+
+strong {
+  font-size: larger;
+  font-weight: 900;
+}
+
+blockquote {
+  min-height: 50px;
+  display: flex;
+  border-left: 3px solid #679186;
+  padding-left: 10px;
+  color: #747474;
+  font-style: italic;
+  font-family: 'Meriweather';
+}
 
 h1,
 h2,
@@ -10,11 +28,19 @@ h3 {
   line-height: 1.167;
 }
 
+h1 a {
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+}
+
+h1 a:hover {
+  color: #ffb4ac;
+}
+
 h5 > a.MuiTypography-root {
   position: relative;
   color: #000;
   text-decoration: none;
-  margin: 0 10px 0 10px;
 }
 
 h5 > a:hover {
@@ -27,16 +53,43 @@ h5 > a:before {
   height: 3px;
   bottom: 0;
   left: 0;
-  background-color: #679186;
+  background-color: #ffb4ac;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
-  -webkit-transition: all 0.1s ease-in-out 0s;
-  transition: all 0.1s ease-in-out 0s;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
 }
 
 h5 > a:hover:before {
-  background-color: #679186;
+  background-color: #ffb4ac;
   visibility: visible;
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
+}
+
+h5 em::after {
+  display: block;
+  width: 20%;
+  height: 3px;
+  background: #ffb4ac;
+  content: ' ';
+}
+
+a {
+  text-decoration: none;
+  color: #ffb4ac;
+}
+
+.name {
+  font-family: 'Meriweather';
+  font-size: 40px;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: #ffb4ac;
+  margin: 0;
+}
+
+.headimg {
+  height: 100%;
+  width: 100%;
 }

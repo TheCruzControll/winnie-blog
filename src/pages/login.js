@@ -47,7 +47,6 @@ const Login = () => {
       .catch(err => {
         setError(err.code);
       });
-    console.log('it got here');
   };
 
   const classes = useStyles();
